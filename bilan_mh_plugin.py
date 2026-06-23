@@ -140,8 +140,8 @@ class BilanMHWidget(QWidget):
                 changed_bil_folisol = {}
                 changed_bil_sol_hydro = {}
 
-                # chargement de tous les enregistrements sol en une seule requête,
-                # puis regroupement en mémoire par mh_id pour éviter une requête par milieu humide
+                # chargement de tous les enregistrements sol selon le milieu humide
+
                 sol_features_by_mh = {}
                 expr = "\"mh_id\" IN ({})".format(",".join(f"'{mid}'" for mid in mh_ids))
                 for sol_feature in sol_layer.getFeatures(QgsFeatureRequest().setFilterExpression(expr)):
@@ -150,7 +150,7 @@ class BilanMHWidget(QWidget):
 
                 # selection dans des enregistrements sol en fonction de la sélection dans milieu humide
 
-                typ_horiz_drain = {"de1dbb7f-c822-41ac-baf0-2f6c93e190e6", "e284f7a9-2127-49b6-b872-e535f3dbe69a"}
+                typ_horiz_drain = {"de1dbb7f-c822-41ac-baf0-2f6c93e190e6", "0972d149-64bc-40bf-9ae3-8dfc674f9057"}
                 typ_sol_folisol = "273a2969-c15c-4c62-8b87-37ee78defc6b"
 
                 for mh_feature in mh_features:
