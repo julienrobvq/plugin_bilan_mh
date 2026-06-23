@@ -1,0 +1,8 @@
+[general]
+name=Bilan - Milieux humides
+qgisMinimumVersion=3.0
+description=Cette extension permet de lancer le calcul du bilan de milieu humide à partir des informations saisies dans le formulaire milieux humides de Géofluence. Elle modifie le formulaire sur les espèces végétales ainsi que le formulaire milieux humides.
+version=0.2
+author=Julien Tremblay
+email=julien@robvq.qc.ca
+about=Extension développée pour les données produites par la solution Géofluence
