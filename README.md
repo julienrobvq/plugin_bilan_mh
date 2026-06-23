@@ -5,9 +5,9 @@ Cette extension permet de calculer les valeurs des associées aux bilans dans le
 ## Étapes d'utilisation
 
 1. Ouvrir la table attributaire du formulaire milieux humides et sélectionner les entités pour lesquelles vous souhaitez générer un bilan. Cette étape est optionnelle, si vous ne sélectionnez rien, le bilan sera calculé pour toutes les entités de la couche. Il est toutefois à noter que le temps de calcul augmente en fonction du nombre d'entités sélectionnées. 
-2. Si vous souhaitez exécuter le calcul uniquement sur votre sélection, cocher l'option "Appliquer seulemetn aux milieux humides sélectionnés".
+2. Si vous souhaitez exécuter le calcul uniquement sur votre sélection, cocher l'option "Appliquer seulement aux milieux humides sélectionnés".
 3. Lancer le calcul du bilan.
-4. Un message vous indique le calcul s'est exécuté avec succès. En cliquant sur le bouton des détails, vous pouvez consulter une synthèse des valeurs calculées et insérer dans le formulaire milieux humides.
+4. Une fois terminé, un message vous indique que le calcul s'est exécuté avec succès. En cliquant sur le bouton des détails, vous pouvez consulter une synthèse des valeurs calculées et insérées dans le formulaire milieux humides.
 
 ## Fonctionnement de l'extension
 
@@ -33,7 +33,7 @@ Pour le bilan de végétation, des valeurs sont calculées dans deux couches.
 
     - Classement des valeurs de recouvrement relatif en ordre décroissant. 
     - Les espèces qui ont un recouvrement relatif égal ou supérieur à 20 sont directement notées comme dominantes.
-    - Celles qui contribuent à atteindre 50% du recouvrement relatif de la strate le sont également. 
+    - Celles qui contribuent à dépasser 50% du recouvrement relatif de la strate le sont également. 
     - Lorsque plusieurs espèces ont le même recouvrement relatif et qu'au moins une d'entre elles permet d'atteindre le seuil de 50%, toutes les espèces sont identifiées comme dominantes. Cela permet de tenir compte du caractère aléatoire du classement initial lorsque plusieurs enregistrements ont la même valeur de recouvrement relatif.
     - Finalement, lorsque les recouvrements absolus totaux d'une strate sont inférieurs à 10%, les espèces qui la composent ne peuvent jamais considérées comme dominantes.
 
