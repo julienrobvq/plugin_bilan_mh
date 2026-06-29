@@ -219,6 +219,7 @@ class BilanMHWidget(QWidget):
 
                 # calcul du recouvrement relatif groupé par mh_id et strate
                 groups_abs = {}
+
                 for veget_feature in veget_features:
                     veget_mh_id, strate = veget_feature["mh_id"], veget_feature["strate"]
                     recouv_abs = veget_feature["recouv_abs_num"]
@@ -270,9 +271,7 @@ class BilanMHWidget(QWidget):
                 # dom = 1 pour recouv_rel_num >= 20 si recouv_abs_num suffisant
                 for veget_feature in veget_features:
                     recouv_rel = changed_recouv_rel[veget_feature.id()]
-                    recouv_abs = veget_feature["recouv_abs_num"]
-                    recouv_abs = float(recouv_abs) if recouv_abs not in (None, '') else 0.0
-                    if recouv_abs >= 10 and recouv_rel >= 20:
+                    if recouv_rel >= 20:
                         veget_layer.changeAttributeValue(veget_feature.id(), idx_dom, 1)
                         changed_dom[veget_feature.id()] = 1
 
