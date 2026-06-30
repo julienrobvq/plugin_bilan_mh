@@ -1,6 +1,6 @@
 from qgis.PyQt.QtWidgets import QWidget, QVBoxLayout, QPushButton, QCheckBox, QMessageBox, QAction, QLabel
 from qgis.PyQt.QtGui import QIcon
-from qgis.core import QgsProject, QgsFeatureRequest
+from qgis.core import QgsProject, QgsFeatureRequest, NULL
 
 class BilanMHWidget(QWidget):
     def __init__(self):
@@ -83,7 +83,7 @@ class BilanMHWidget(QWidget):
                 idx_hyd_sec = mh_layer.fields().indexFromName("hyd_sec")
                 
                 hyd_sec_field_names = [
-                    "racin_hors", "mousse_tronc", "souch_hyper", "lentic_hyper", "racin_adven"
+                    "racin_hors", "mousse_tronc", "souch_hyper", "lentic_hyper", "racin_surf", "racin_adven"
                 ]
 
                 hyd_sec_field = [mh_layer.fields().indexFromName(sec_name) for sec_name in hyd_sec_field_names]
@@ -336,11 +336,19 @@ class BilanMHWidget(QWidget):
                     mh_layer.changeAttributeValue(mh_feature.id(), idx_bilan_mh, 0)
 
                 for mh_feature in mh_features:
-                    if (changed_bil_sol_hydro[mh_feature.id()] > 0 and mh_feature.attribute(idx_pert_maj) == 0) or changed_bil_veg[mh_feature.id()] > 0:
-                        mh_layer.changeAttributeValue(mh_feature.id(), idx_bilan_mh, 1)
-                    else:
-                        mh_layer.changeAttributeValue(mh_feature.id(), idx_bilan_mh, 0)
-                    changed_bilan_mh[mh_feature.id()] = 1 if (changed_bil_sol_hydro[mh_feature.id()] > 0 and mh_feature.attribute(idx_pert_maj) == 0) or changed_bil_veg[mh_feature.id()] > 0 else 0
+                    pert_maj = mh_feature.attribute(idx_pert_maj)
+                    pert_maj_check = pert_maj == '0' or pert_maj == NULL
+                    # print(
+                    #     "mh_id:", repr(mh_feature["id"]),
+                    #     "bil_sol_hydro:", repr(changed_bil_sol_hydro[mh_feature.id()]),
+                    #     "bil_veg:", repr(changed_bil_veg[mh_feature.id()]),
+                    #     "pert_maj:", repr(mh_feature.attribute(idx_pert_maj)),
+                    # )
+                    # print(type(mh_feature.attribute(idx_pert_maj)))
+                    bilan_calcul = 1 if (changed_bil_sol_hydro[mh_feature.id()] > 0 and pert_maj_check) or changed_bil_veg[mh_feature.id()] > 0 else 0
+
+                    mh_layer.changeAttributeValue(mh_feature.id(), idx_bilan_mh, bilan_calcul)
+                    changed_bilan_mh[mh_feature.id()] = bilan_calcul
 
                 # Étape 8 : résumé des valeurs calculées par le plugin
 

@@ -46,3 +46,8 @@ Pour le bilan de végétation, des valeurs sont calculées dans deux couches.
 ### Bilan final
 
 - Le bilan indique la présence d'un milieu humide lorsqu'un sol hydromorphe a été identifié et qu'aucune perturbation anthropique majeure et irréversible n'a été signalée, ou lorsque la végétation est dominée par essences hygrophiles.
+
+### Tests à faire
+
+- S'assurer que les strates avec moins de 10% de recouvrement absolu total ont uniquement des espèces non dominantes
+- S'assurer que la contrainte sur le bilan du sol minéral + drainage 5 ou 6 est bien traitée. 
